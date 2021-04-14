@@ -1,24 +1,46 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+    background-color: chocolate;
+    margin: 0;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+#menu {
+    text-align: right;
+    height: 500px;
+    padding: 30px;
+    background-image: url("AutoBMW.jpg");
+    background-size: cover;
+    font-size: 50px;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
+a {
+    padding: 20px;
+    color: white;
+    text-decoration: none;
+    text-shadow: 5px 5px 10px black;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+    a:hover {
+        text-shadow: none;
+    }
+
+table {
+    width: 100%;
+    font-size: 50px;
+    text-align: center;
+}
+
+#stopka {
+    font-size: 20px;
+    text-align: right;
+    padding: 30px;
+    background-color: brown;
+}
+
+#floatBG {
+    background-image: url("AutoBMW.jpg"); /* The image used */
+    background-color: #cccccc; /* Used if the image is unavailable */
+    height: 250px; /* You must set a specified height */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
 }
