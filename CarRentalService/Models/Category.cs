@@ -1,14 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Web;
 
 namespace CarRentalService.Models
 {
     public class Category
     {
-        public int CategoryId { get; set; }
-        [Required(ErrorMessage = "Wprowadz nazwe")]
+        public ICollection<Car> Cars { get; set; }
+
+        public int CategoryID { get; set; }
         public string Name { get; set; }
         public string Desc { get; set; }
-        public ICollection<Car> Car { get; set; }
+
     }
 }

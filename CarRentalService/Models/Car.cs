@@ -1,23 +1,31 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Web;
 
 namespace CarRentalService.Models
 {
     public class Car
     {
-        public int CarId { get; set; }
-        [Required(ErrorMessage = "Wprowadz marke")]
+        public int CarID { get; set; } //Id
+        [Required(ErrorMessage = "Wprowadź numer rejestracyjny")]
+        public string CarRegistration { get; set; }
+
+        [Required(ErrorMessage = "Wprowadź markę samochodu")]
         public string Mark { get; set; }
-        [Required(ErrorMessage = "Wprowadz model")]
+
+        [Required(ErrorMessage = "Wprowadź model samochodu")]
         public string Model { get; set; }
+
         [StringLength(100)]
         public string Desc { get; set; }
         public decimal Price { get; set; }
-        [Column(TypeName = "DateTime2")]
         public DateTime AddDate { get; set; }
-        public int CategoryId { get; set; }
+        public string PosterName { get; set; }
+        public int CategoryID { get; set; }
         public virtual Category Category { get; set; }
+
 
     }
 }

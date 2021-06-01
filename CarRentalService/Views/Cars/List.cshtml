@@ -1,0 +1,34 @@
+﻿@model CarRentalService.ViewModels.DetailsViewModel
+@using CarRentalService.Infrastructure
+@{
+    ViewBag.Title = "List";
+    //Layout = null;
+}
+<h2>Top 3 Najnowsze Auta</h2>
+<table style=" background-color:#0b4f65">
+    <tr>
+        @foreach (var car in Model.Top3NewestCars)
+            {
+                <td>
+                    <a href=" @Url.Action("Details","Cars", new { id = car.CarID})">
+                        <img src="@Url.PostersPath(car.PosterName)" width="350px" /></a>
+                </td>
+            }
+    </tr>
+</table>
+<h2>@Model.Category.Name - @Model.Category.Desc</h2>
+<div id="nowosci">
+    <table border=1px>
+        @foreach (var car in Model.CarsFromCategory)
+         {
+          <tr>
+                <td><a href=" @Url.Action("Details","Cars", new { id = car.CarID})">
+                    <img src="@Url.PostersPath(car.PosterName)" width="500px"></a></td>
+                <td>@car.Mark @car.Model</td>
+                <td>@car.Price PLN</td>
+                <td><a href="@Url.Action("AddToCart","Cart",new { id = car.CarID})">&#128722;</a></td>
+          </tr>
+
+         }
+    </table>
+</div>

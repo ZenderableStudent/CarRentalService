@@ -15,6 +15,5 @@ namespace CarRentalService
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
-
     }
 }

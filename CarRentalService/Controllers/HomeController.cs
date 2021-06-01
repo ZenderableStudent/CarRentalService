@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -11,15 +10,20 @@ namespace CarRentalService.Controllers
 {
     public class HomeController : Controller
     {
-        private CarsContext _db = new CarsContext();
+        CarsContext db = new CarsContext();
+
         // GET: Home
         public ActionResult Index()
         {
-            foreach (var a in _db.Categories)
-            {
-                Debug.WriteLine(a.Name);
-            }
+            //zebranie kategorii do listy i wrzucenie ich widoku:
+            //var categories = db.Categories.ToList();
+
             return View();
+        }
+        //Dodanie metody zwracajacej widok strony: 
+        public ActionResult StronyStatyczne(string nazwa)
+        {
+            return View(nazwa);
         }
     }
 }

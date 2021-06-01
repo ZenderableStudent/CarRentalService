@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Init : DbMigration
+    public partial class Migracja : DbMigration
     {
         public override void Up()
         {
@@ -11,34 +11,36 @@
                 "dbo.Cars",
                 c => new
                     {
-                        CarId = c.Int(nullable: false, identity: true),
+                        CarID = c.Int(nullable: false, identity: true),
+                        CarRegistration = c.String(nullable: false),
                         Mark = c.String(nullable: false),
                         Model = c.String(nullable: false),
                         Desc = c.String(maxLength: 100),
                         Price = c.Decimal(nullable: false, precision: 18, scale: 2),
                         AddDate = c.DateTime(nullable: false),
-                        CategoryId = c.Int(nullable: false),
+                        PosterName = c.String(),
+                        CategoryID = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.CarId)
-                .ForeignKey("dbo.Categories", t => t.CategoryId, cascadeDelete: true)
-                .Index(t => t.CategoryId);
+                .PrimaryKey(t => t.CarID)
+                .ForeignKey("dbo.Categories", t => t.CategoryID, cascadeDelete: true)
+                .Index(t => t.CategoryID);
             
             CreateTable(
                 "dbo.Categories",
                 c => new
                     {
-                        CategoryId = c.Int(nullable: false, identity: true),
-                        Name = c.String(nullable: false),
+                        CategoryID = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
                         Desc = c.String(),
                     })
-                .PrimaryKey(t => t.CategoryId);
+                .PrimaryKey(t => t.CategoryID);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.Cars", "CategoryId", "dbo.Categories");
-            DropIndex("dbo.Cars", new[] { "CategoryId" });
+            DropForeignKey("dbo.Cars", "CategoryID", "dbo.Categories");
+            DropIndex("dbo.Cars", new[] { "CategoryID" });
             DropTable("dbo.Categories");
             DropTable("dbo.Cars");
         }
